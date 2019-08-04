@@ -5,10 +5,22 @@ const musicFolder = './public/music/';
 module.exports = {
   // List all songs
   findAll: function(req, res) {
-    Song.find(req.query, function(err, songs) {
-      if (err) { return res.status(500).send(err); }
-      return res.json(songs)
-    })
+    const pageSize = 5;
+    const page = req.query.page || 1;
+
+    Song.find({}).skip((pageSize * page) - pageSize)
+      .limit(pageSize)
+      .exec(function(err, songs) {
+        Song.countDocuments(function (err, count) {
+          if (err) { return res.status(500).send(err); }
+          return res.json({
+            data: songs,
+            page: page,
+            totalEntries: count,
+            totalPages: Math.ceil(count/pageSize),
+          });
+        });
+      });
   },
 
   // Populate metadata for files in public/music
