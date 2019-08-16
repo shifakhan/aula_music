@@ -5,11 +5,13 @@
 ## Setup
 `cd aula_music`
 `npm install`
-`npm start`
+`cd client && npm install`
+`cd ../server && npm install`
+`cd ../ && npm start`
 
 ## Requests
-- localhost:3000/songs?page=4
-- localhost:3000/music/song12.mp3
+- localhost:3001/songs?page=4
+- localhost:3001/music/song12.mp3
 
 ## Immediate points for improvement
 - Adding specs to the models and controllers. Set up separate test and dev environments.

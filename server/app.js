@@ -3,11 +3,12 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const config = require('./config/index');
 
-const indexRouter = require('./server/routes/index');
-const songsRouter = require('./server/routes/songs');
+const indexRouter = require('./routes/index');
+const songsRouter = require('./routes/songs');
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Map routers
+app.use(cors())
 app.use('/', indexRouter);
 app.use('/songs', songsRouter);
 
