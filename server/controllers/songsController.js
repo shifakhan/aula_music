@@ -24,6 +24,14 @@ module.exports = {
       });
   },
 
+  findOne: function(req, res) {
+    const id = req.params.id;
+    Song.findById(id, function(err, song) {
+      if (err) { return res.status(500).send(err); }
+      return res.json({data: song});
+    })
+  },
+
   // Populate metadata for files in public/music
   seedData: function (req, res) {
     let files = fs.readdirSync(musicFolder);

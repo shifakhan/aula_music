@@ -7,6 +7,10 @@ router
     .get(songsController.findAll);
 
 router
+  .route('/:id')
+    .get(songsController.findOne);
+
+router
   .route('/seed_data')
     .get(songsController.seedData);
 

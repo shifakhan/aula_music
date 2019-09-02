@@ -6,13 +6,15 @@ import {createStore, combineReducers, applyMiddleware} from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import App from './containers/App';
 import songsReducer from './reducers/songs';
+import songReducer from './reducers/song';
 import notificationReducer from './reducers/notification';
 import songsSaga from './sagas/songs';
 
 const sagaMiddleware = createSagaMiddleware();
 const reducers = combineReducers({
   songs: songsReducer,
-  notification: notificationReducer
+  notification: notificationReducer,
+  song: songReducer
 });
 const store = createStore(
   reducers,

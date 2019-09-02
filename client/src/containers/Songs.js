@@ -38,14 +38,15 @@ class Songs extends Component {
   render() {
     const { data } = this.props;
     const currentSong = this.state.currentSong;
+
     return(
       <div className={styles.songs}>
         <h1>Songs</h1>
-          <MusicPlayer
-            title={currentSong.title}
-            artist={currentSong.artist}
-            url={currentSong.url}
-          />
+        <MusicPlayer
+          title={currentSong.title}
+          artist={currentSong.artist}
+          url={currentSong.url}
+        />
         {data.songs.map((song) => {
           return(
             <div key={song._id}>
