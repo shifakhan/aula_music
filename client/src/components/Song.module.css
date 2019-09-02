@@ -1,0 +1,10 @@
+.card {
+  display: flex;
+  margin-top: 0.5em;
+}
+.songInfo {
+  flex: 1;
+}
+.launchSongButton {
+  text-align: right;
+}

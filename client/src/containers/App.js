@@ -1,14 +1,21 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
+import {Route, Switch, Redirect, Link} from 'react-router-dom';
+import Songs from './Songs';
+import Notification from './Notification';
+import styles from './App.module.css';
+import Container from '@material-ui/core/Container';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <Button variant="contained" color="primary">
-        Hello World
-      </Button>
-    </div>
+    <Container maxWidth='md' className={styles.app}>
+      <Notification/>
+      <Switch>
+        <Route path='/songs' component={Songs} />
+        <Redirect exact path='/' to='/songs' />
+        <Route render={() => (<div> Page not found!! Go <Link to="/"> Home </Link></div>)} />
+      </Switch>
+    </Container>
   );
-}
+};
 
 export default App;
