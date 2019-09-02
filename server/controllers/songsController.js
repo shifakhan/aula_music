@@ -1,6 +1,7 @@
 const Song = require('../models/Song');
 const fs = require('fs');
 const musicFolder = './public/music/';
+const musicPath = 'music';
 
 module.exports = {
   // List all songs
@@ -30,7 +31,13 @@ module.exports = {
     files.forEach((file, index) => {
       let fileStat = fs.statSync(musicFolder + '/' + file).isDirectory();
       if(!fileStat) {
-        songs.push(new Song ({title: file, artist: `Artist${index}`}));
+        songs.push(
+          new Song ({
+            title: file,
+            artist: `Artist${index}`,
+            path: `${musicPath}/${file}`
+          })
+        );
       }
     });
     Song.deleteMany({ title: /.*/ }, function (err) {

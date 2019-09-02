@@ -5,6 +5,7 @@ const songSchema = new Schema(
   {
     title: { type: 'String', required: true },
     artist: { type: 'String', required: true },
+    path: { type: 'String', required: true },
   },
   { timestamps: true }
 );
